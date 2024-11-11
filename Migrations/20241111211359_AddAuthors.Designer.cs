@@ -4,6 +4,7 @@ using Ardelean_Sebastian_Laborator2.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Ardelean_Sebastian_Laborator2.Migrations
 {
     [DbContext(typeof(Ardelean_Sebastian_Laborator2Context))]
-    partial class Ardelean_Sebastian_Laborator2ContextModelSnapshot : ModelSnapshot
+    [Migration("20241111211359_AddAuthors")]
+    partial class AddAuthors
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -15,5 +15,6 @@ namespace Ardelean_Sebastian_Laborator2.Data
         }
 
         public DbSet<Ardelean_Sebastian_Laborator2.Models.Book> Book { get; set; } = default!;
+        public DbSet<Ardelean_Sebastian_Laborator2.Models.Publisher> Publisher { get; set; } = default!;
     }
 }

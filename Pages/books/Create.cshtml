@@ -3,6 +3,7 @@
 
 @{
     ViewData["Title"] = "Create";
+    ViewData["AuthorID"] = new SelectList(_context.Set<Author>(), "ID", "LastName");
 }
 
 <h1>Create</h1>
@@ -32,6 +33,17 @@
                 <label asp-for="Book.PublishingDate" class="control-label"></label>
                 <input asp-for="Book.PublishingDate" class="form-control" />
                 <span asp-validation-for="Book.PublishingDate" class="textdanger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Book.PublisherID" class="control-label">Publisher Name</label>
+                <select asp-for="Book.PublisherID" class="form-control" asp-items="ViewBag.PublisherID">
+                </select>
+                <span asp-validation-for="Book.PublisherID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Book.AuthorsID" class="control-label">Author</label>
+                <select asp-for="Book.AuthorsID" class="form-control" asp-items="ViewBag.AuthorID"></select>
+                <span asp-validation-for="Book.AuthorsID" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Security.Policy;
 
 namespace Ardelean_Sebastian_Laborator2.Models
 {
@@ -17,5 +18,11 @@ namespace Ardelean_Sebastian_Laborator2.Models
 
         [DataType(DataType.Date)]
         public DateTime PublishingDate { get; set; }
+
+        public int? PublisherID { get; set; }
+        public Publisher? Publisher { get; set; }
+
+        public int? AuthorsID { get; set; } // Foreign key
+        public Authors? Authors { get; set; }
     }
 }

@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Ardelean_Sebastian_Laborator2.Data;
 using Ardelean_Sebastian_Laborator2.Models;
 
-namespace Ardelean_Sebastian_Laborator2.Pages.books
+namespace Ardelean_Sebastian_Laborator2.Pages.Publishers
 {
     public class IndexModel : PageModel
     {
@@ -19,14 +19,11 @@ namespace Ardelean_Sebastian_Laborator2.Pages.books
             _context = context;
         }
 
-        public IList<Book> Book { get;set; } = default!;
+        public IList<Publisher> Publisher { get;set; } = default!;
 
         public async Task OnGetAsync()
         {
-            Book = await _context.Book
-            .Include(b => b.Publisher)
-            .ToListAsync();
-
+            Publisher = await _context.Publisher.ToListAsync();
         }
     }
 }

@@ -4,6 +4,7 @@ using Ardelean_Sebastian_Laborator2.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Ardelean_Sebastian_Laborator2.Migrations
 {
     [DbContext(typeof(Ardelean_Sebastian_Laborator2Context))]
-    partial class Ardelean_Sebastian_Laborator2ContextModelSnapshot : ModelSnapshot
+    [Migration("20241111203844_AddPublisher")]
+    partial class AddPublisher
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,27 +24,6 @@ namespace Ardelean_Sebastian_Laborator2.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
-
-            modelBuilder.Entity("Ardelean_Sebastian_Laborator2.Models.Authors", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
-
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("Authors");
-                });
 
             modelBuilder.Entity("Ardelean_Sebastian_Laborator2.Models.Book", b =>
                 {
@@ -54,9 +36,6 @@ namespace Ardelean_Sebastian_Laborator2.Migrations
                     b.Property<string>("Author")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("AuthorsID")
-                        .HasColumnType("int");
 
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(6, 2)");
@@ -72,8 +51,6 @@ namespace Ardelean_Sebastian_Laborator2.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
-
-                    b.HasIndex("AuthorsID");
 
                     b.HasIndex("PublisherID");
 
@@ -99,22 +76,11 @@ namespace Ardelean_Sebastian_Laborator2.Migrations
 
             modelBuilder.Entity("Ardelean_Sebastian_Laborator2.Models.Book", b =>
                 {
-                    b.HasOne("Ardelean_Sebastian_Laborator2.Models.Authors", "Authors")
-                        .WithMany("Books")
-                        .HasForeignKey("AuthorsID");
-
                     b.HasOne("Ardelean_Sebastian_Laborator2.Models.Publisher", "Publisher")
                         .WithMany("Books")
                         .HasForeignKey("PublisherID");
 
-                    b.Navigation("Authors");
-
                     b.Navigation("Publisher");
-                });
-
-            modelBuilder.Entity("Ardelean_Sebastian_Laborator2.Models.Authors", b =>
-                {
-                    b.Navigation("Books");
                 });
 
             modelBuilder.Entity("Ardelean_Sebastian_Laborator2.Models.Publisher", b =>
